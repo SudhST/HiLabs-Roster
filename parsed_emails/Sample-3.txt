@@ -1,8 +1,0 @@
-{
-    "subject": "Sample-3",
-    "from": "Prajay Sapkale <prajay.sapkale@hilabs.com>",
-    "to": "Prajay Sapkale <prajay.sapkale@hilabs.com>",
-    "date": "Mon, 01 Sep 2025 14:02:22 +0000",
-    "body": "Hello,\nEffective 09/22/2025, Paul Mcmallan, MD will move primary practice locations from Mira Mesa to Sorrento Mesa.\nBest Regards\nPrajay",
-    "tables": []
-}

@@ -1,6 +1,7 @@
 import os
 from parser.email_parser import parse_eml_to_json,save_parsed_email
 from parser.field_extractor import extract_fields
+from llm_extractor import extract_fields_with_llm
 from parser.normalizer import normalize_number, normalize_date, normalize_name
 from parser.excel_writer import write_to_excel
 import config
@@ -13,18 +14,33 @@ def main():
             print(f"Processing: {filename}")
             parsed_email = parse_eml_to_json(file_path)
             save_parsed_email(file_path, parsed_email)
-            # print(parsed_email)
             # body = extract_email_body(file_path)
             # fields = extract_fields(body)
             
-            # # Normalize data
-            # fields["NPI"] = normalize_number(fields["NPI"])
-            # fields["TIN"] = normalize_number(fields["TIN"])
-            # fields["PPG"] = normalize_number(fields["PPG"])
-            # fields["Effective Date"] = normalize_date(fields["Effective Date"])
-            # fields["Provider Name"] = normalize_name(fields["Provider Name"])
             
             # all_data.append(fields)
+            # Convert .eml → email JSON (basic structure)
+            body = parsed_email.get("body", "")
+            email_obj = {
+                "from": "unknown@example.com",  # you can expand email_parser to capture these
+                "to": "unknown@example.com",
+                "subject": filename,
+                "body": body
+            }
+
+            # Extract fields using LLM
+            fields = extract_fields_with_llm(email_obj)
+
+            # Normalize
+            fields["NPI"] = normalize_number(fields["NPI"])
+            fields["TIN"] = normalize_number(fields["TIN"])
+            fields["PPG"] = normalize_number(fields["PPG"])
+            fields["Effective Date"] = normalize_date(fields["Effective Date"])
+            fields["Termination Date"] = normalize_date(fields["Termination Date"])
+            fields["Provider Name"] = normalize_name(fields["Provider Name"])
+            fields["Organization Name"] = normalize_name(fields["Organization Name"])
+
+            all_data.append(fields)
     
     # Write Excel
     # output_file = os.path.join(config.OUTPUT_FOLDER, "Roster_Output.xlsx")
