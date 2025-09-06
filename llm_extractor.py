@@ -15,9 +15,11 @@ def extract_fields_with_llm(email_obj):
     email_text = f"""
     From: {email_obj.get('from', '')}
     To: {email_obj.get('to', '')}
+    date: {email_obj.get('date', '')}
     Subject: {email_obj.get('subject', '')}
-    Body:
-    {email_obj.get('body', '')}
+    Body:{email_obj.get('body', '')}
+    Table:{email_obj.get('table', '')}
+    Filename: {email_obj.get('filename', '')}
     """
 
     # Define JSON schema for structured output
