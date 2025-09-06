@@ -4,12 +4,7 @@ import json
 OLLAMA_URL = "http://localhost:11434/api/chat"
 MODEL_NAME = "llama3.2:3b"
 
-def extract_fields_with_llm(email_obj):
-    """
-    Use LLaMA model via Ollama to extract required provider fields
-    from an email JSON object (with from, to, subject, body).
-    Uses structured outputs for reliability.
-    """
+def extract_fields_with_llm(email_obj):    
 
     # Combine useful parts of the email into a single text
     email_text = f"""
@@ -18,7 +13,7 @@ def extract_fields_with_llm(email_obj):
     date: {email_obj.get('date', '')}
     Subject: {email_obj.get('subject', '')}
     Body:{email_obj.get('body', '')}
-    Table:{email_obj.get('table', '')}
+    Table:{email_obj.get('tables', '')}
     Filename: {email_obj.get('filename', '')}
     """
 
@@ -52,7 +47,9 @@ def extract_fields_with_llm(email_obj):
             "PPG","Organization Name","Address","City","State","ZIP","Phone","Fax","Email"
         ]
     }
-
+    with open("system_prompt.txt", "r") as f:
+        system_prompt = f.read()      
+    
     payload = {
         "model": MODEL_NAME,
         "stream": False,  # structured output needs non-streaming mode
@@ -60,10 +57,7 @@ def extract_fields_with_llm(email_obj):
             {
                 "role": "system",
                 "content": (
-                    "You are an information extraction system. "
-                    "Always return data strictly in JSON format "
-                    "matching the provided schema. "
-                    "If a field is missing, set its value to 'Information not found'."
+                    system_prompt
                 )
             },
             {
