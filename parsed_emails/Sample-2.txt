@@ -1,0 +1,8 @@
+{
+    "subject": "Sample-2  ",
+    "from": "Prajay Sapkale <prajay.sapkale@hilabs.com>",
+    "to": "Prajay Sapkale <prajay.sapkale@hilabs.com>",
+    "date": "Mon, 01 Sep 2025 14:07:15 +0000",
+    "body": "Hi\nPlease “\nTerminate\n” the provider under Medical Group affiliation “\nCyrus Hendricks, M.D.\n.” Tax ID:\n45-8888885\n.\nEffective Date:\n9/1/2025\n(Or closest accepted date)\nProvider:\nCyrus Hendricks, M.D\n/ License:\nD66661\n/ NPI:\n1164444443\n/\nInternal Medicine 207R00000X\n**Default Provider: Spen Hoostal, MD / License: A155559 / NPI: 1999999997 / Internal Medicine 207R00000X\nNetwork(s): PPG#’s / Medicare\nShared Risk:\nMercian Medical Group - 1014\nNetwork(s): PPG#’s / Commercial HMO\nShared Risk:\nMercian Medical Group – 0P4\nBest Regards\nPrajay",
+    "tables": []
+}
