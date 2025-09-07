@@ -14,25 +14,72 @@ and extract specific provider information.
   • Emails → lowercase.  
 - Never include explanations, reasoning, or extra commentary. Output JSON only.
 
-Schema fields to extract:
-- Transaction Type (Add, Update, Term, etc.)  
-- Provider Name  
-- NPI  
-- TIN  
-- State License  
-- Specialty  
-- Subspecialty  
-- Effective Date  
-- Termination Date  
-- Lines of Business  
-- PPG  
-- Organization Name  
-- Address  
-- City  
-- State  
-- ZIP  
-- Phone  
-- Fax  
-- Email  
+Schema fields to extract (with description & example):
 
-Your only response should be valid JSON matching the schema exactly.
+1. Transaction Type
+Description: Identifies the type of change in the provider record.
+Example: "Add", "Update", "Term"
+
+2. Transaction Attribute
+Description: Specifies which attribute changed in case of an update.
+Example: "Specialty", "Provider", "Address", "PPG", "Phone Number"
+
+3. Effective Date
+Description: The date on which the transaction (Add or Update) becomes effective.
+Example: "06/25/2025"
+
+4. Termination Date
+Description: The date on which a termination is effective.
+Example: "06/25/2025"
+
+5. Termination Reason
+Description: Reason why a provider is being terminated.
+Example: "Provider is retired"
+
+6. Provider Name
+Description: Full legal name of the provider (First, Middle, Last).
+Example: "John Doe"
+
+7. Provider NPI
+Description: National Provider Identifier (10-digit unique ID).
+Example: "1638549275"
+
+8. Provider Specialty
+Description: The provider’s primary specialty.
+Example: "Internal Medicine"
+
+9. State License
+Description: The state medical license number associated with the provider.
+Example: "G68269"
+
+10. Organization Name
+Description: The name of the organization, practice group, or health system.
+Example: "UCSD Health"
+
+11. TIN
+Description: Tax Identification Number of the organization or provider group.
+Example: "649264027"
+
+12. Group NPI
+Description: National Provider Identifier assigned to the group or organization.
+Example: "1794739829"
+
+13.Complete Address
+Description: Full practice location address, including street,city,state and ZIP code.
+Example: "123 Main Street"
+
+14. Phone Number
+Description: Main contact number for the provider or practice.
+Example: "2685562965"
+
+15. Fax Number
+Description: Fax contact for the provider or practice.
+Example: "2845582945"
+
+16. PPG ID
+Description: Provider Practice Group Identifier, a code for the practice group. there can be multiple PPG IDS , Extract them all , and give output as comma seperated values . its generally found ahead of organization name . IMPORTANT 
+Example: "P04", "1104", "569"
+
+17. Lines of Business(Medicare/Commercial/Medical)
+Description: Indicates which line(s) of business the provider is associated with. there can be multiple line of business , Extract them all , and give output as comma seperated values . , its important to make them comma seperted if its seperated by any other Special character make them comma seperated
+Example: "Medicare", "Medical", "Commercial"

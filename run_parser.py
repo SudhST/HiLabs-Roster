@@ -33,9 +33,11 @@ def main():
             print(f"Extracted Fields: {fields}")
 
             # # Normalize
-            fields["NPI"] = normalize_number(fields["NPI"])
+            fields["Provider NPI"] = normalize_number(fields["Provider NPI"])
             fields["TIN"] = normalize_number(fields["TIN"])
-            fields["PPG"] = normalize_number(fields["PPG"])
+            fields["PPG ID"] = normalize_number(fields["PPG ID"])
+            fields["Phone Number"] = normalize_number(fields["Phone Number"])
+            fields["Fax Number"] = normalize_number(fields["Fax Number"])
             fields["Effective Date"] = normalize_date(fields["Effective Date"])
             fields["Termination Date"] = normalize_date(fields["Termination Date"])
             fields["Provider Name"] = normalize_name(fields["Provider Name"])
