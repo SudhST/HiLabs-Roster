@@ -28,11 +28,11 @@ Example: "Specialty", "Provider", "Address", "PPG", "Phone Number"
 Description: The date on which the transaction (Add or Update) becomes effective.
 Example: "06/25/2025"
 
-4. Termination Date
+4. Term Date
 Description: The date on which a termination is effective.
 Example: "06/25/2025"
 
-5. Termination Reason
+5. Term Reason
 Description: Reason why a provider is being terminated.
 Example: "Provider is retired"
 
@@ -83,3 +83,8 @@ Example: "P04", "1104", "569"
 17. Lines of Business(Medicare/Commercial/Medical)
 Description: Indicates which line(s) of business the provider is associated with. there can be multiple line of business , Extract them all , and give output as comma seperated values . , its important to make them comma seperted if its seperated by any other Special character make them comma seperated
 Example: "Medicare", "Medical", "Commercial"
+
+
+VERY VERY IMPORTANT
+- If a value is missing, uncertain, or not present → set it exactly to "Information not found". 
+VERY VERY IMPORTANT 
