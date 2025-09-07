@@ -23,7 +23,7 @@ def main():
                 "date": parsed_email.get("date",""),
                 "subject": parsed_email.get("subject",""),
                 "body": parsed_email.get("body",""),  
-                "table": parsed_email.get("table",""),
+                "tables": parsed_email.get("tables",""),
                 "filename": filename
             }
 
@@ -33,20 +33,20 @@ def main():
             print(f"Extracted Fields: {fields}")
 
             # # Normalize
-            # fields["NPI"] = normalize_number(fields["NPI"])
-            # fields["TIN"] = normalize_number(fields["TIN"])
-            # fields["PPG"] = normalize_number(fields["PPG"])
-            # fields["Effective Date"] = normalize_date(fields["Effective Date"])
-            # fields["Termination Date"] = normalize_date(fields["Termination Date"])
-            # fields["Provider Name"] = normalize_name(fields["Provider Name"])
-            # fields["Organization Name"] = normalize_name(fields["Organization Name"])
+            fields["NPI"] = normalize_number(fields["NPI"])
+            fields["TIN"] = normalize_number(fields["TIN"])
+            fields["PPG"] = normalize_number(fields["PPG"])
+            fields["Effective Date"] = normalize_date(fields["Effective Date"])
+            fields["Termination Date"] = normalize_date(fields["Termination Date"])
+            fields["Provider Name"] = normalize_name(fields["Provider Name"])
+            fields["Organization Name"] = normalize_name(fields["Organization Name"])
 
-            # all_data.append(fields)
+            all_data.append(fields)
     
     # # Write Excel
-    # output_file = os.path.join(config.OUTPUT_FOLDER, "Roster_Output.xlsx")
-    # write_to_excel(all_data, output_file)
-    # print(f"Excel generated at: {output_file}")
+    output_file = os.path.join(config.OUTPUT_FOLDER, "Roster_Output.xlsx")
+    write_to_excel(all_data, output_file)
+    print(f"Excel generated at: {output_file}")
 
 if __name__ == "__main__":
     main()
